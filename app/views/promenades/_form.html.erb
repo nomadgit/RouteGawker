@@ -1,1 +1,9 @@
-<p>Partial form to input the origin and destination for a desired route</p>
+<p>Partial form to input the origin and destination for a desired route:</p>
+
+<%= form_for @promenade do |f| %>
+  <%= f.label :origin_location %><br>
+  <%= f.text_field :origin_location %><br>
+  <%= f.label :destination_location %><br>
+  <%= f.text_field :destination_location %><br>
+  <%= f.submit :submit %>
+<% end %>
