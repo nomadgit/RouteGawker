@@ -1,3 +1,5 @@
+require 'json'
+
 class PromenadesController < ApplicationController
   include HTTParty
 
@@ -17,8 +19,12 @@ class PromenadesController < ApplicationController
 
   def show
     @promenade = Promenade.find(params[:id])
-    google_directions_response = HTTParty.get("https://maps.googleapis.com/maps/api/directions/json?origin=#{@promenade.origin_location}&destination=#{@promenade.destination_location}&key=#{ENV['API_KEY']}")
-    p google_directions_response.body
+    response = HTTParty.get("https://maps.googleapis.com/maps/api/directions/json?origin=#{@promenade.origin_location}&destination=#{@promenade.destination_location}&key=#{ENV['API_KEY']}&mode=walking")
+    # print @google_directions_response.body
+
+    parsed_object = JSON.parse(response.body)
+    @rex = parsed_object["routes"][0]["legs"][0]
+    puts @rex
   end
 
   private
