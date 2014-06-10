@@ -5,6 +5,7 @@ gem 'pg'
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'geocoder'
+gem 'httparty'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'polylines'

@@ -1,4 +1,6 @@
 class PromenadesController < ApplicationController
+  include HTTParty
+
   def index
     @promenades = Promenade.all()
     @promenade = Promenade.new()
@@ -15,6 +17,8 @@ class PromenadesController < ApplicationController
 
   def show
     @promenade = Promenade.find(params[:id])
+    google_directions_response = HTTParty.get("https://maps.googleapis.com/maps/api/directions/json?origin=#{@promenade.origin_location}&destination=#{@promenade.destination_location}&key=#{ENV['API_KEY']}")
+    p google_directions_response.body
   end
 
   private
@@ -24,3 +28,5 @@ class PromenadesController < ApplicationController
   end
 
 end
+
+# http://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=API_KEY
