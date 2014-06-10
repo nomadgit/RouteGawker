@@ -7,7 +7,7 @@
     <% @promenades.each do |p| %>
       <li>
         <p>
-          <%= p.origin_location %> to <%= p.destination_location %>
+          <%= link_to "#{p.origin_location} to #{p.destination_location}", promenade_path(p.id) %>
         </p>
       </li>
     <% end %>
