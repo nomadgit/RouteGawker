@@ -1,0 +1,15 @@
+<h1>Partial form to render existing routes!</h1>
+
+<p>Previous promenades in ze database: </p>
+
+<% if @promenades %>
+  <ul>
+    <% @promenades.each do |p| %>
+      <li>
+        <p>
+          <%= p.origin_location %> to <%= p.destination_location %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
