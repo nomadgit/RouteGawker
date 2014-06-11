@@ -2,3 +2,8 @@
 
 <p><%= @promenade.origin_location %> to <%= @promenade.destination_location %></p>
 
+<% @vantages.each do |vantage| %>
+<ul>
+  <li class=""><img src="http://maps.googleapis.com/maps/api/streetview?size=640x640&location=<%=vantage.latitude%>,<%=vantage.longitude%>&heading=151.78&pitch=-0.76"></li>
+</ul>
+<% end %>
